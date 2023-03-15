@@ -7,10 +7,10 @@ https://ual.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=08d4b253-e94c-497a-a4f
 #### Brief: 
 I transferred my sound and signal processing project to openFrameworks. I use basic waveforms to create a range of sounds that continually changed. I added two sinewave oscillators of different frequenciestogether to make the sound fading in and out.
 
-
 ### OpenFrameworks 2:
 https://ual.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=adcaaba7-6acc-4d0a-a877-afc600d3f8f8&start=0
-
+#### Brief: 
+It's a team effort. We create a newboids class, which is a subclass of the boids class. It has a different look than the boids class, which we treat as two separate groups.
 
 
 ### Python 1: 
