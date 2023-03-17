@@ -194,10 +194,10 @@ https://ual.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=db2200f7-d7a2-4709-82b
 ### Brief: 
 I took two images in the folder according to the tutorial and used TensorFlow to style one image.
 ### Description
-* Maximilian library is used.
-* Three maxiSample objects are created using the Maximilian library, which are beat, loop, and chord. 
+* The TensorFlow original style transfer algorithm was used for image style transfer.
 ```
-  audio.loadSample('loop.wav',loop);
-  audio.loadSample('beat.wav',beat);
-  audio.loadSample('chord.wav',chord);
+import tensorflow_hub as hub
+hub_model = hub.load('https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/2')
+stylized_image = hub_model(tf.constant(content_image), tf.constant(style_image))[0]
+tensor_to_image(stylized_image)
 ```
