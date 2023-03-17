@@ -171,7 +171,7 @@ plt.imshow(img2_gray)
 diff = img1_gray - img2_gray
 plt.imshow(diff)
 ```
-* Convert the image from a 2D ( X*Y) to a 3D ( X*Y×1) array to mark the differences we found as a red overlay on the grayscale image.
+* Convert the image from a 2D ( X*Y) to a 3D ( X*Y×1) array to mark the differences as a red overlay on the grayscale image.
 ```
 img1_gray = np.mean(img1_no_alpha, axis=2)
 img1_gray.shape
@@ -181,7 +181,7 @@ plt.imshow(img2_gray)
 diff = img1_gray - img2_gray
 plt.imshow(diff)
 ```
-* Color all the pixels where there's a difference red.
+* Color all the pixels that differ in color red.
 ```
 red = [1, 0, 0]
 diff_rgb[diff_thresholded, :] = red
