@@ -160,17 +160,33 @@ https://ual.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4b405178-49fa-44d0-afc
 ### Brief: 
 I used Python 3.x with the packages NumPy and matplotlib. I loaded the two images in the img_align_celeba folder and visualized the difference between the two images.
 ### Description
-* Maximilian library is used.
-* Three maxiSample objects are created using the Maximilian library, which are beat, loop, and chord. 
+* Achieved a grayscale image.
+* Calculate and plot the difference between two images.
 ```
-void Boidnew::draw()
-{
-	ofSetColor(ofRandom(0,255), 181, 193);
-	ofRect(position.x, position.y, 20, 20);
-}
-
+img1_gray = np.mean(img1_no_alpha, axis=2)
+img1_gray.shape
+img2_gray = np.mean(img2_no_alpha, axis=2)
+plt.imshow(img2_gray)
+#calculate the difference between the two images
+diff = img1_gray - img2_gray
+plt.imshow(diff)
 ```
-
+* Convert the image from a 2D ( X*Y) to a 3D ( X*Y×1) array to mark the differences we found as a red overlay on the grayscale image.
+```
+img1_gray = np.mean(img1_no_alpha, axis=2)
+img1_gray.shape
+img2_gray = np.mean(img2_no_alpha, axis=2)
+plt.imshow(img2_gray)
+#calculate the difference between the two images
+diff = img1_gray - img2_gray
+plt.imshow(diff)
+```
+* Color all the pixels where there's a difference red.
+```
+red = [1, 0, 0]
+diff_rgb[diff_thresholded, :] = red
+plt.imshow(diff_rgb)
+```
 ## Python 2:
 ### Panopto:
 https://ual.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=db2200f7-d7a2-4709-82be-afc600d3f90e
