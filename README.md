@@ -78,14 +78,79 @@ Sets up a maxiClock object called 'myClock'.The clock speed is set to 120 by usi
 ### Panopto:
 https://ual.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=adcaaba7-6acc-4d0a-a877-afc600d3f8f8&start=0
 ### Brief: 
-It's a team effort. We created a newboids class, which is a subclass of the boids class. It has a different look than the boids class, which we treat as two separate groups.
+It's a team effort. We created a Boidnew class, which is a subclass of the boids class. It has a different look than the boids class, which we treat as two separate groups.
 ### Description
-* Maximilian library is used.
-* Three maxiSample objects are created using the Maximilian library, which are beat, loop, and chord. 
+* A subclass inherits position and velocity from its parent class, but has its own appearance.
 ```
-  audio.loadSample('loop.wav',loop);
-  audio.loadSample('beat.wav',beat);
-  audio.loadSample('chord.wav',chord);
+ class Boid
+{
+// all the methods and variables after the
+// private keyword can only be used inside
+// the class
+protected:
+	ofVec3f position;
+	ofVec3f velocity;
+	
+	float separationWeight;
+	float cohesionWeight;
+	float alignmentWeight;
+	
+	float separationThreshold;
+	float neighbourhoodSize;
+	
+	ofVec3f separation(std::vector<Boid *> &otherBoids);
+	ofVec3f cohesion(std::vector<Boid *> &otherBoids);
+	ofVec3f alignment(std::vector<Boid *> &otherBoids);
+	
+// all the methods and variables after the
+// public keyword can only be used by anyone
+public:	
+	Boid();
+	Boid(ofVec3f &pos, ofVec3f &vel);
+	
+	~Boid();
+	
+	ofVec3f getPosition();
+	ofVec3f getVelocity();
+	
+	
+	float getSeparationWeight();
+	float getCohesionWeight();
+	float getAlignmentWeight();
+	
+	float getSeparationThreshold();
+	float getNeighbourhoodSize();
+	
+	void setSeparationWeight(float f);
+	void setCohesionWeight(float f);
+	void setAlignmentWeight(float f);
+	
+	void setSeparationThreshold(float f);
+	void setNeighbourhoodSize(float f);
+	
+	void update(std::vector<Boid *> &otherBoids, ofVec3f &min, ofVec3f &max);
+	
+	void walls(ofVec3f &min, ofVec3f &max);
+	
+	virtual void draw();
+};
+```
+```
+class Boidnew : public Boid
+{
+public:
+	Boidnew();
+
+	void draw();
+};
+```
+```
+void Boidnew::draw()
+{
+	ofSetColor(ofRandom(0,255), 181, 193);
+	ofRect(position.x, position.y, 20, 20);
+}
+
 ```
 
 ## Python 1: 
@@ -98,9 +163,12 @@ I used Python 3.x with the packages NumPy and matplotlib. I loaded the two image
 * Maximilian library is used.
 * Three maxiSample objects are created using the Maximilian library, which are beat, loop, and chord. 
 ```
-  audio.loadSample('loop.wav',loop);
-  audio.loadSample('beat.wav',beat);
-  audio.loadSample('chord.wav',chord);
+void Boidnew::draw()
+{
+	ofSetColor(ofRandom(0,255), 181, 193);
+	ofRect(position.x, position.y, 20, 20);
+}
+
 ```
 
 ## Python 2:
